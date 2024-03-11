@@ -37,7 +37,8 @@ N = 5 # number of trials
 
 paths= geo_paths(S,T,r, q,sigma,steps,N)
 
-plt.plot(paths);
+plt.plot(paths)
 plt.xlabel("Time Increments")
 plt.ylabel("Stock Price")
 plt.title("Geometric Brownian Motion")
+plt.show()

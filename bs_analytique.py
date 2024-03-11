@@ -15,7 +15,7 @@ S = 116.75  # Prix de l'actif sous-jacent
 K = 150  # Prix d'exercice de l'option
 r = 0.05  # Taux d'intérêt sans risque
 sigma = 0.3173 # Volatilité du sous-jacent
-T = 0.99 # Temps jusqu'à l'expiration de l'option
+T = 1 # Temps jusqu'à l'expiration de l'option en année
 
 call_price, put_price = black_scholes(S, K, r, sigma, T)
 print("Prix de l'option d'achat :", call_price)

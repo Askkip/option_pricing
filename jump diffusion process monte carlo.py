@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 import numpy as np
-
-import numpy as np
 from scipy.stats import norm
 
 def black_scholes(S, K, r, sigma, T):
@@ -28,12 +26,12 @@ def merton_jump_paths(S, T, r, sigma,  lam, m, v, steps, Npaths):
 
 S = 100 # current stock price
 T = 1 # time to maturity
-r = 0.02 # risk free rate
+r = 0.05 # risk free rate
 m = 0 # meean of jump size
-v = 0.3 # standard deviation of jump
-lam =6 # intensity of jump i.e. number of jumps per annum
+v = 0.1 # standard deviation of jump
+lam =2 # intensity of jump i.e. number of jumps per annum
 steps =10000 # time steps
-Npaths = 3 # number of paths to simulate
+Npaths = 1000 # number of paths to simulate
 sigma = 0.2 # annual standard deviation , for weiner process
 K =100 #strinking price
 
@@ -43,10 +41,11 @@ plt.plot(j)
 plt.xlabel('Days')
 plt.ylabel('Stock Price')
 plt.title('Jump Diffusion Process')
-#plt.show()
+plt.show()
 
 
-mcprice = np.maximum(j[-1]-K,0).mean() * np.exp(-r*T) # calculate value of call
+#j[-1] = S_T
+mcprice = np.maximum(j[-1]-K,0).mean() * np.exp(-r*T) # calculate value of call : E(rend)exp(-rT)
 call_price, put_price = black_scholes(S, K, r, sigma, T)
 print("Prix de l'option d'achat Black Scholes :", call_price)
 print('Monte Carlo Merton Price =', mcprice)
